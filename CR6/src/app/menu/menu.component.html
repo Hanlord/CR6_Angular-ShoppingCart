@@ -13,9 +13,16 @@
           <hr>
           <p>€{{val.price}}0</p>
           <hr>
-          <a routerLink="../products/{{productId}}" class="btn btn-primary g-2">Details</a>
-          <button (click)="addToCart()" class="btn btn-success g-2">Order</button>
-          <p class="text-danger">This product is not available</p>
+          <div class="row">
+            <ng-template [ngIf]="val.availability" [ngIfElse]="unavailable">
+              <div class="col-md-12">
+                <a class="btn btn-primary m-1" routerLink="../products/{{productId}}">Details</a>
+                <button type="button" class="btn btn-success " (click)="addToCart(productId)">Order</button>
+              </div>
+            </ng-template>
+            <ng-template #unavailable>
+              <p class="text-danger">This product is not available.</p>
+            </ng-template>
         </div>
       </div>    
     </div>
