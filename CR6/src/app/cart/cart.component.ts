@@ -26,6 +26,10 @@ export class CartComponent {
   this.items.push(product);
 }
 
+ngOnInit(): void {
+  this.items = this.cartService.getItems();
+}
+
 getItems() {
   return this.items;
 }
@@ -34,9 +38,7 @@ clearCart() {
   this.items = [];
   return this.items;
 }
-ngOnInit(): void {
-  this.items = this.cartService.getItems();
-}
+
 productPrice() {
   let total = 0;
   this.items.forEach((product) => {
@@ -45,24 +47,22 @@ productPrice() {
   return total
   }
 
-  servicePrice () {
-    return this.productPrice()*0.1
+servicePrice () {
+  return this.productPrice()*0.1
   }
-
-    discountPrice() {
-      const productsTotal = this.productPrice();
-      const serviceTotal = this.servicePrice();
-      const priceTotal = productsTotal + serviceTotal;
-      if (priceTotal < 40) {
-        return 0;
-      } else {
-        return priceTotal*0.15
-      }
-    }
-
-    totalPrice() {
-      return (this.productPrice() + this.servicePrice()) - this.discountPrice()
-    }
+discountPrice() {
+  const productsTotal = this.productPrice();
+  const serviceTotal = this.servicePrice();
+  const priceTotal = productsTotal + serviceTotal;
+  if (priceTotal < 40) {
+  return 0;
+} else {
+  return priceTotal*0.15
+}
+}
+totalPrice() {
+  return (this.productPrice() + this.servicePrice()) - this.discountPrice()
+}   
 }
 
   

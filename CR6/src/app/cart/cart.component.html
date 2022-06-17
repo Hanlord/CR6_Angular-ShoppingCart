@@ -1,16 +1,15 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-9 col-sm-12 justify-content-center my-2">
+        <div class="col-md-9 col-sm-12 justify-content-center my-1">
             <div class="card">
                 <div class="card-title">
-                    <h3>Cart</h3>
+                    <h2>Cart</h2>
                 </div>
                 <div class="card-body">
                     <div class="cart-item" *ngFor="let item of items">
                         <div class="row">
                             <div class="col-sm-2">
-                                <img src="{{item.img}}" class="d-none d-md-flex"
-                                    style="height:80px; object-fit:cover">
+                                <img src="{{item.img}}" class="d-none d-md-flex" width="90">
                             </div>
                             <div class="col-sm-8">
                                 <p>{{ item.name }} </p>
@@ -25,10 +24,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-sm-12 justify-content-center my-2">
+        <div class="col-md-3 col-sm-12 justify-content-center my-1">
             <div class="card">
                 <div class="card-title">
-                    <h3>Summary</h3>
+                    <h3>Bill</h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -37,7 +36,7 @@
                     <div class="row">
                         <p>Service {{ servicePrice() | currency: "EUR" }}</p>
                     </div>
-                    <div class="row" *ngIf="discountPrice() > 0">
+                    <div class="row">
                         <p>Discount {{ discountPrice() | currency: "EUR" }}</p>
                     </div>
                     <hr>
@@ -47,7 +46,7 @@
                 </div>
             </div>
         </div>
-<hr>
+
 <div class="container.fluid text-center p-5 row">
     <h1>Order Form</h1>
     <p>please fill up the info for the delivery</p>
@@ -56,5 +55,5 @@
     <p>Name &ensp;<input type="text" formControlName="name"></p> 
     </div>
     <p>Address &nbsp;<input type="text" formControlName="address"></p>
-    <button class="btn btn-success">Purchase</button>
+    <button class="btn btn-success" type="submit">Purchase</button>
 </div>
