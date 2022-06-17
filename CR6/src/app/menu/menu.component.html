@@ -4,13 +4,18 @@
 <br>
 <div class="container">
     <div class="row">
-    <div *ngFor="let val of food" class="col-lg-4 col-sm-6 col-xs-12 justify-content-center g-3">
+    <div *ngFor="let val of food; index as productId" class="col-lg-4 col-sm-6 col-xs-12 justify-content-center g-3">
     <div class="card" style="width: 18rem;">
         <img src="{{val.img}}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{val.name}}</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <hr>
+          <p>€{{val.price}}0</p>
+          <hr>
+          <a routerLink="../details" class="btn btn-primary">Details</a>
+          <a routerLink="../cart" class="btn btn-success">Order</a>
+          <p class="text-danger">This product is not available</p>
         </div>
       </div>    
     </div>
