@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailsComponent } from '../details/details.component';
+import { CartComponent } from '../cart/cart.component';
+import { ActivatedRoute, Params } from '@angular/router';
+import { products } from '../products';
+import { IProducts } from '../IProducts';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,6 +12,8 @@ import { DetailsComponent } from '../details/details.component';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+  product: IProducts = {} as IProducts;
+  id: number = 0;
 food: Array<{name:string, price:number,img:string,description:string,availability:boolean}>=[
   {
     name:"Pizza Inferno",
@@ -59,9 +66,16 @@ food: Array<{name:string, price:number,img:string,description:string,availabilit
   },
 ];
 
-  constructor() { }
-
+  constructor(private route: ActivatedRoute,private cartService: CartService) { }
+  addToCart() {
+    window.alert('Your product has been added to the cart!');
+    this.cartService.addToCart(this.product);
+  }
   ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['productId'];
+      this.product = products[this.id];
+    });
   }
 
 }

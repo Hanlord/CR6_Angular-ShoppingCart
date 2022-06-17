@@ -1,3 +1,14 @@
+<h3>Cart</h3>
+
+
+<div class="cart-item" *ngFor="let item of items">
+<img src="{{item.img}}">
+ <span>{{ item.name }} </span>
+
+ <span>{{ item.price | currency:"EUR" }}</span>
+
+</div>
+
 <div class="container.fluid text-center p-5 row">
     <h1>Order Form</h1>
     <p>please fill up the info for the delivery</p>

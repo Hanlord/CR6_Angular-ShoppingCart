@@ -1,2 +1,15 @@
-<h2>Products</h2>
+<h2>Food Details</h2>
 
+
+<div *ngIf="product">
+<img src="{{product.img}}" alt="">
+
+ <h3>{{ product.name }}</h3>
+
+ <h4>{{ product.price | currency:"EUR" }}</h4>
+
+ <p>{{ product.description }}</p>
+
+ <button (click)="addToCart()" class="bg-success">Order</button>
+</div>
+<br>

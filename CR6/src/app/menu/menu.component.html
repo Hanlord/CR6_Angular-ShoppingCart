@@ -13,8 +13,8 @@
           <hr>
           <p>€{{val.price}}0</p>
           <hr>
-          <a routerLink="../details" class="btn btn-primary">Details</a>
-          <a routerLink="../cart" class="btn btn-success">Order</a>
+          <a routerLink="../products/{{productId}}" class="btn btn-primary g-2">Details</a>
+          <button (click)="addToCart()" class="btn btn-success g-2">Order</button>
           <p class="text-danger">This product is not available</p>
         </div>
       </div>    
