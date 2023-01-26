@@ -1,5 +1,4 @@
 import { FormControl, FormGroup } from '@angular/forms';
-import { MenuComponent } from '../menu/menu.component';
 import { Injectable } from '@angular/core';
 import { IProducts } from '../IProducts';
 import { CartService } from '../cart.service';
@@ -16,13 +15,11 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 export class CartComponent implements OnInit, DoCheck {
   count : number = 0;
   items: IProducts[] = [];
-
-  name = new FormControl('');
   formInfo = new FormGroup({
   name: new FormControl(""),
   address:new FormControl(""),
 });
-  constructor(private cartService: CartService, private CS : CartService) { }
+  constructor(private cartService: CartService) { }
  addToCart(product: IProducts) {
   this.items.push(product);
 }
@@ -66,7 +63,7 @@ totalPrice() {
 }   
 
 ngDoCheck() : void{
-  this.count = this.CS.itemsLength();
+  this.count = this.cartService.itemsLength();
 }
 }
 

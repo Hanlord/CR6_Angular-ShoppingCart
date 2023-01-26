@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { MenuComponent } from '../menu/menu.component';
 import { products } from '../products';
 import { IProducts } from '../IProducts';
 import { CartService } from '../cart.service';
@@ -12,7 +11,6 @@ import { CartService } from '../cart.service';
 export class DetailsComponent implements OnInit {
   product: IProducts = {} as IProducts;
   id: number = 0;
-products:IProducts[] = products;
   constructor(private route: ActivatedRoute,private cartService: CartService) { }
   addToCart() {
     window.alert('Your order has been added to the cart!');
